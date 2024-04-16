@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
@@ -19,6 +20,7 @@ def upload_image():
 
 
 def main():
+    os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
     st.title("日本語 AI OCR")
     image_file = upload_image()
     if image_file:
